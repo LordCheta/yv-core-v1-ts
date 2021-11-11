@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import User from "../data/user";
 import { successResponse } from "./index";
+import userTransformer from "../transformers/user";
 
 
 const check = async (req: Request, res: Response, next: NextFunction) => {
@@ -16,7 +17,7 @@ const getUserByApiKey = async (req: Request, res: Response, next: NextFunction) 
 
         const user = await User.getUserByApiKey(req.user.api_key);
 
-        successResponse(res, user);
+        successResponse(res, userTransformer(user));
     } catch (e) {
         console.log(e);
         return res.status(400).json({e})
