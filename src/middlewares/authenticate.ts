@@ -1,4 +1,4 @@
-import User from "../data/user";
+import User from "../services/user";
 import {NextFunction, Request, Response} from "express";
 
 

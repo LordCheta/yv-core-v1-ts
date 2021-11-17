@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 const start = async () => {
     try {
         // database connection
-        await mysqlDb.connect()
+        // await mysqlDb.connect()
 
     } catch (e) {
         console.log(e.message);

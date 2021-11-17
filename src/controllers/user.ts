@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import User from "../data/user";
+import User from "../services/user";
 import { successResponse } from "./index";
 import userTransformer from "../transformers/user";
 
@@ -28,9 +28,9 @@ const getUserByApiKey = async (req: Request, res: Response, next: NextFunction) 
 const getUserProfile = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
-        const userProfile = await User.getUserProfile(req.body.id)
+        // const userProfile = await User.getUserProfile(req.body.id)
 
-        successResponse(res, userProfile);
+        // successResponse(res, userProfile);
     } catch (e) {
         console.log(e);
         return res.status(400).json({e})
