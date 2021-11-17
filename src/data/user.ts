@@ -57,7 +57,7 @@ const db = mysql.connection;
 
 const getUserByApiKey = async (apiKey: string) => {
     try {
-        const sql = `SELECT * FROM users WHERE api_key = "${apiKey}"`
+        const sql = `SELECT * FROM users WHERE api_key = "${apiKey}"`;
         let [rows, fields]: any = await db.query(sql);
 
         if(rows.length === 0) throw Error("User With Requested Api Key Not Found");
@@ -70,9 +70,15 @@ const getUserByApiKey = async (apiKey: string) => {
     }
 }
 
-const getUserProfile = async (apiKey: string) => {
+const getUserById = async (userId: any) => {
     try {
-            // const getUserSql =
+            const getUserSql = `SELECT * FROM users WHERE id = "${userId}"`;
+
+            let [rows, fields]: any = await db.query(getUserSql);
+
+            if(rows.length === 0) throw Error("User With Requested Id Not Found");
+
+            return rows[0];
 
     } catch (e) {
         throw e;
@@ -82,5 +88,5 @@ const getUserProfile = async (apiKey: string) => {
 
 export default {
     getUserByApiKey,
-    getUserProfile
+    getUserById
 }
